@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Course} from "../model/course";
 import {HttpClient} from "@angular/common/http";
-import {delay, first, tap} from "rxjs";
+import {first, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class CoursesService {
       ))
   }
 
-  save(record: Course) {
+  save(record: Partial<Course>) {
     return this.httpClient.post<Course>(this.API, record)
   }
 
