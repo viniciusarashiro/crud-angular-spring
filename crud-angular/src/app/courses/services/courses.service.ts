@@ -39,4 +39,8 @@ export class CoursesService {
     return this.httpClient.put<Course>(`${this.API}/${record._id}`, record)
   }
 
+  remove(id: String) {
+    return this.httpClient.delete(`${this.API}/${id}`)
+  }
+
 }
