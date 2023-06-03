@@ -1,7 +1,6 @@
 package com.vinicius.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -29,13 +28,13 @@ public class Course {
     @Column(length = 100, nullable = false)
     private String name;
 
-    @NotBlank
+    @NotNull
     @Length(max = 10)
     @Pattern(regexp = "Back-end|Front-end")
     @Column(length = 10, nullable = false)
     private String category;
 
-    @NotBlank
+    @NotNull
     @Length(max = 10)
     @Pattern(regexp = "Ativo|Inativo")
     @Column(length = 10, nullable = false)
