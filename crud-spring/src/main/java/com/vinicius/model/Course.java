@@ -1,9 +1,12 @@
 package com.vinicius.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.vinicius.enums.Category;
+import com.vinicius.enums.Status;
+import com.vinicius.enums.converters.CategoryConverter;
+import com.vinicius.enums.converters.StatusConverter;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.SQLDelete;
@@ -29,14 +32,12 @@ public class Course {
     private String name;
 
     @NotNull
-    @Length(max = 10)
-    @Pattern(regexp = "Back-end|Front-end")
-    @Column(length = 10, nullable = false)
-    private String category;
+    @Column(length =10, nullable = false)
+    @Convert(converter = CategoryConverter.class)
+    private Category category;
 
     @NotNull
-    @Length(max = 10)
-    @Pattern(regexp = "Ativo|Inativo")
     @Column(length = 10, nullable = false)
-    private String status = "Ativo";
+    @Convert(converter = StatusConverter.class)
+    private Status status = Status.ACTIVE;
 }
